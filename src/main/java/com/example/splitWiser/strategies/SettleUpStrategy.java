@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface SettleUpStrategy {
-    List<Transaction> settleUp(Map<User, Integer> balanceMap);
+    List<Transaction> settleUp(Map<User, Double> balanceMap);
 }

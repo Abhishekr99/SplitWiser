@@ -13,7 +13,7 @@ import lombok.Data;
 public class UserExpense extends BaseModel{
     @ManyToOne
     private User user;
-    private int amount;
+    private double amount;
     @ManyToOne
     private Expense expense;
     @Enumerated(EnumType.STRING)

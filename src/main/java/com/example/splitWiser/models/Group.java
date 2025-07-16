@@ -12,7 +12,8 @@ import java.util.List;
 public class Group extends BaseModel{
     private String name;
     private String description;
-    @ManyToMany//(mappedBy = "groups") //means my_user_groups table created -- so data for this mapping table inserted only if groups is set in user entity
+    //without EAGER, u will get lazy load error as session can timeout before you access members -- esp when to try adding members to group via addAll
+    @ManyToMany(fetch = FetchType.EAGER)//(mappedBy = "groups") //means my_user_groups table created -- so data for this mapping table inserted only if groups is set in user entity
     private List<User> members;
     @ManyToOne
     private User admin;

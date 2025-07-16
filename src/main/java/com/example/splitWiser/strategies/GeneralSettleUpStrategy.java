@@ -11,7 +11,7 @@ import java.util.Map;
 public class GeneralSettleUpStrategy implements SettleUpStrategy {
 
     @Override
-    public List<Transaction> settleUp(Map<User, Integer> balanceMap) {
+    public List<Transaction> settleUp(Map<User, Double> balanceMap) {
         // Implement the logic for settling up using a general strategy
         // This could involve iterating through the balanceMap and creating transactions
         // based on the balances of each user.

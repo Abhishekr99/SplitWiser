@@ -37,11 +37,11 @@ public class SettleUpService {
         // Fetch the expenses from the group
         List<Expense> expenses = group.getExpenses();
         // Generate balanceMap from expenses
-        Map<User, Integer> balanceMap = new HashMap<>();
+        Map<User, Double> balanceMap = new HashMap<>();
         for(Expense expense : expenses){
             for(UserExpense userExpense : expense.getUserExpenses()){
                 User user = userExpense.getUser();
-                balanceMap.putIfAbsent(user, 0);
+                balanceMap.putIfAbsent(user, 0.0);
                 if(userExpense.getUserExpenseType().equals(UserExpenseType.PAID_BY)){
                     balanceMap.put(user, balanceMap.get(user) + userExpense.getAmount());
                 } else if(userExpense.getUserExpenseType().equals(UserExpenseType.PAID_FOR)){

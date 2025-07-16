@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class Expense extends BaseModel{
     private String description;
-    private int totalAmount;
+    private double totalAmount;
     @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserExpense> userExpenses;
     @ManyToOne

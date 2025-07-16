@@ -6,5 +6,5 @@ import lombok.Data;
 public class Transaction {
     Long paidByUserId;
     Long paidToUserId;
-    int amount;
+    double amount;
 }

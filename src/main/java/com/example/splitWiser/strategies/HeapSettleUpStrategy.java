@@ -10,7 +10,7 @@ import java.util.*;
 @Primary
 public class HeapSettleUpStrategy implements SettleUpStrategy{
     @Override
-    public List<Transaction> settleUp(Map<User, Integer> balanceMap) {
+    public List<Transaction> settleUp(Map<User, Double> balanceMap) {
 
         // Home - work
         System.out.println("Heap settle up algorithm running");
@@ -18,15 +18,15 @@ public class HeapSettleUpStrategy implements SettleUpStrategy{
         // This could involve creating transactions based on the balances of each user
         // and using a heap to efficiently manage the settlement process.
 
-        PriorityQueue<Map.Entry<User, Integer>> maxHeapOfLenders = new PriorityQueue<>(
+        PriorityQueue<Map.Entry<User, Double>> maxHeapOfLenders = new PriorityQueue<>(
                 (a, b) -> b.getValue().compareTo(a.getValue())
         );
 
-        PriorityQueue<Map.Entry<User, Integer>> maxHeapOfBorrowers = new PriorityQueue<>(
+        PriorityQueue<Map.Entry<User, Double>> maxHeapOfBorrowers = new PriorityQueue<>(
                 (a, b) -> (b.getValue().compareTo(a.getValue())*-1)
         );
 
-        for(Map.Entry<User, Integer> entry : balanceMap.entrySet()){
+        for(Map.Entry<User, Double> entry : balanceMap.entrySet()){
             if(entry.getValue() > 0){
                 maxHeapOfLenders.offer(entry);
             } else if(entry.getValue() < 0){
@@ -36,12 +36,12 @@ public class HeapSettleUpStrategy implements SettleUpStrategy{
 
         List<Transaction> transactions = new ArrayList<>();
         while(!maxHeapOfLenders.isEmpty() && !maxHeapOfBorrowers.isEmpty()){
-            Map.Entry<User, Integer> lenderEntry = maxHeapOfLenders.poll();
-            Map.Entry<User, Integer> borrowerEntry = maxHeapOfBorrowers.poll();
+            Map.Entry<User, Double> lenderEntry = maxHeapOfLenders.poll();
+            Map.Entry<User, Double> borrowerEntry = maxHeapOfBorrowers.poll();
 
             User lender = lenderEntry.getKey();
             User borrower = borrowerEntry.getKey();
-            int amountToSettle = Math.min(lenderEntry.getValue(), Math.abs(borrowerEntry.getValue()));
+            Double amountToSettle = Math.min(lenderEntry.getValue(), Math.abs(borrowerEntry.getValue()));
 
             // Create a transaction
             Transaction transaction = new Transaction();

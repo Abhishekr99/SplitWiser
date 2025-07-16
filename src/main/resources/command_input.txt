@@ -1,0 +1,11 @@
+register-user ski ski@gmail.com password1
+register-user sank sank@gmail.com password1
+register-user patel patel@gmail.com password1
+register-user abi abi@gmail.com password1
+register-group 1 'Ladakh future trip' '2026 Travel plan'
+add-users-to-group 1 1 2 3 4
+add-group-expense 1 'day 1 breakfast' 1000 paid-by 1 for 2
+add-group-expense 1 'day 1 lunch' 1000 paid-by 2 for 3
+add-group-expense 1 'day 1 dinner' 1000 paid-by 3 for 1
+add-group-expense 1 'day 2 brunch' 1000 paid-by 1 for 4
+settleup 1

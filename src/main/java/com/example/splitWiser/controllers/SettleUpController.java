@@ -15,7 +15,7 @@ public class SettleUpController {
     @Autowired
     SettleUpService settleUpService;
 
-    public SettleUpResponseDto settleUp(SettleUpRequestDto request) {
+    public SettleUpResponseDto settleUp(SettleUpRequestDto request) { //only  setting up for group
         SettleUpResponseDto settleUpResponseDto = new SettleUpResponseDto();
         try {
             // Call the service to settle up
